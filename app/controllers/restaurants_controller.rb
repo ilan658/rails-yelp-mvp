@@ -23,11 +23,9 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find_by(id: params[:id].to_i)
-    if @restaurant.nil?
-      redirect_to restaurants_path, alert: "Restaurant not found"
-    else
-      @reviews = @restaurant.reviews
-    end
+    @restaurant = Restaurant.find(params[:id].to_i)
+    @test_variable = "Hello, World!"
+    puts "Inside the show action"  # Ajoutez ce message
+    raise "This is a test error"   # Ajoutez une exception pour voir si elle est levée
   end
 end
